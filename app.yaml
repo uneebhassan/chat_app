@@ -1,0 +1,24 @@
+# Use postgres/example user/password credentials
+
+services:
+
+  postgres:
+    image: postgres:18
+    environment:
+      - POSTGRES_DB=chat_app
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=G7kP2vQ9LmXa 
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  chat_app:
+      image: chat_app
+      ports:
+      - 8000:8000
+      env_file:
+      - .env
+
+volumes:
+  postgres_data:

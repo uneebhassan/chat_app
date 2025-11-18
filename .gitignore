@@ -1,0 +1,44 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables / secrets
+.env
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+*.bat
+
+# Docker
+*.env
+docker-compose.override.yml
+*.swp
+
+# Migrations (optional)
+**/migrations/*.py
+**/migrations/*.pyc
+!**/migrations/__init__.py
