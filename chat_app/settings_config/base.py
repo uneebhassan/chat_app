@@ -14,9 +14,7 @@ BUILTIN_APPS = [
 
 DEPENDENCY_APPS = ["rest_framework", "drf_yasg"]
 
-CUSTOM_DJANGO_APPS = [
-    "chat",
-]
+CUSTOM_DJANGO_APPS = ["chat", "authentication"]
 
 INSTALLED_APPS = BUILTIN_APPS + DEPENDENCY_APPS + CUSTOM_DJANGO_APPS
 
@@ -96,8 +94,17 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.SessionAuthentication",
-        "rest_framework.authentication.TokenAuthentication",  # optional
         "rest_framework_simplejwt.authentication.JWTAuthentication",  # optional
     ],
+}
+
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {
+        "Bearer": {
+            "type": "apiKey",
+            "description": 'JWT Authorization using Bearer scheme. Example: "Bearer {token}"',
+            "name": "Authorization",
+            "in": "header",
+        }
+    }
 }

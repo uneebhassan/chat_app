@@ -38,6 +38,7 @@ SWAGGER_URLS = [
 
 APP_URLS = [
     path("", include("chat.urls")),
+    path("auth/", include("authentication.urls")),
 ]
 
 BASE_URLS = [
