@@ -1,2 +1,3 @@
 venv
 start_chat_app.bat
+db.sqlite3
