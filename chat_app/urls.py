@@ -16,6 +16,33 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from .settings_config.swagger import schema_view
 
-urlpatterns = [path("admin/", admin.site.urls), path("", include("chat.urls"))]
+
+SWAGGER_URLS = [
+    # Swagger UI
+    re_path(
+        r"^swagger(?P<format>\.json|\.yaml)$",
+        schema_view.without_ui(cache_timeout=0),
+        name="schema-json",
+    ),
+    path(
+        "swagger/",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
+    # Redoc
+    path("redoc/", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"),
+]
+
+APP_URLS = [
+    path("", include("chat.urls")),
+    path("auth/", include("authentication.urls")),
+]
+
+BASE_URLS = [
+    path("admin/", admin.site.urls),
+]
+
+urlpatterns = BASE_URLS + APP_URLS + SWAGGER_URLS
