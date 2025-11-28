@@ -14,7 +14,7 @@ BUILTIN_APPS = [
 
 DEPENDENCY_APPS = ["rest_framework", "drf_yasg"]
 
-CUSTOM_DJANGO_APPS = ["chat", "authentication"]
+CUSTOM_DJANGO_APPS = ["chat", "authentication", "common"]
 
 INSTALLED_APPS = BUILTIN_APPS + DEPENDENCY_APPS + CUSTOM_DJANGO_APPS
 
