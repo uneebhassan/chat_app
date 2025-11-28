@@ -1,6 +1,6 @@
 from common.models import UUIDTimeStampedModelMixin
 from django.db import models
-from django.contrib.auth.models import User
+from common.constants import USER_MODEL
 from common.choices import CONVERSATION_TYPES
 
 
@@ -38,7 +38,7 @@ class ConversationMember(UUIDTimeStampedModelMixin):
         help_text="The conversation this user is participating in.",
     )
     user = models.ForeignKey(
-        User,
+        USER_MODEL,
         on_delete=models.CASCADE,
         help_text="The user who is part of the conversation.",
     )
@@ -66,7 +66,7 @@ class Message(UUIDTimeStampedModelMixin):
         help_text="The conversation in which this message was sent.",
     )
     sender = models.ForeignKey(
-        User,
+        USER_MODEL,
         on_delete=models.CASCADE,
         help_text="The user who sent the message.",
     )
