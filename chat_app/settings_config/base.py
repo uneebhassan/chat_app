@@ -13,7 +13,7 @@ BUILTIN_APPS = [
     "django.contrib.staticfiles",
 ]
 
-DEPENDENCY_APPS = ["rest_framework", "drf_yasg"]
+DEPENDENCY_APPS = ["corsheaders", "rest_framework", "drf_yasg"]
 
 CUSTOM_DJANGO_APPS = ["chat", "authentication", "common"]
 
@@ -21,6 +21,7 @@ INSTALLED_APPS = BUILTIN_APPS + DEPENDENCY_APPS + CUSTOM_DJANGO_APPS
 
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -117,3 +118,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
