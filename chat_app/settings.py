@@ -26,3 +26,4 @@ DEBUG = os.getenv("DEBUG") == "TRUE"
 
 
 AUTH_USER_MODEL = "authentication.CustomUser"
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID", "")
