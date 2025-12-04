@@ -1,4 +1,7 @@
 from django.urls import path
-from .views import Index
+from .views import ConversationsAPIView, MessagesAPIView
 
-urlpatterns = [path("index/", Index.as_view(), name="index")]
+urlpatterns = [
+    path("conversations/", ConversationsAPIView.as_view(), name="conversations"),
+    path("messages/", MessagesAPIView.as_view(), name="messages"),
+]
