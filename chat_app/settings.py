@@ -23,3 +23,6 @@ load_dotenv()
 # Django config variables
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG") == "TRUE"
+
+
+AUTH_USER_MODEL = "authentication.CustomUser"

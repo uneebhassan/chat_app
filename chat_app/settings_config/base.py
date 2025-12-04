@@ -4,6 +4,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 BUILTIN_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -14,7 +15,7 @@ BUILTIN_APPS = [
 
 DEPENDENCY_APPS = ["rest_framework", "drf_yasg"]
 
-CUSTOM_DJANGO_APPS = ["chat", "authentication"]
+CUSTOM_DJANGO_APPS = ["chat", "authentication", "common"]
 
 INSTALLED_APPS = BUILTIN_APPS + DEPENDENCY_APPS + CUSTOM_DJANGO_APPS
 
@@ -46,8 +47,6 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = "chat_app.wsgi.application"
 
 
 # Password validation
@@ -107,4 +106,14 @@ SWAGGER_SETTINGS = {
             "in": "header",
         }
     }
+}
+
+ASGI_APPLICATION = "chat_app.asgi.application"
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
 }
