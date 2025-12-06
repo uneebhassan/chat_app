@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 ALLOWED_HOSTS = ["*"]
 
 
@@ -121,3 +123,8 @@ CHANNEL_LAYERS = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=30),
+}

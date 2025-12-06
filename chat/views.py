@@ -9,7 +9,9 @@ class ConversationsAPIView(APIView):
     permission_classes = []
 
     def get(self, request):
-        queryset = Conversation.objects.filter(type="direct")
+        queryset = Conversation.objects.filter(
+            type="direct", members__user=request.user
+        ).distinct()
         data = ConversationSerializer(
             queryset, many=True, context={"user": request.user}
         ).data
