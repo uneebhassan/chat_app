@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Conversation, Message
+from authentication.models import CustomUser
 
 
 class ConversationSerializer(serializers.ModelSerializer):
@@ -25,3 +26,9 @@ class MessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Message
         fields = "__all__"
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ["id", "username"]
